@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adityachakradhar Reddy | Senior Software Engineer @ Google</title>
+  <meta name="description" content="Personal website of Adityachakradhar Reddy – Senior Software Engineer @ Google. Systems. People. Impact. 14 years of building scalable systems, solving complex problems, and working with amazing teams.">
+  <meta name="author" content="Adityachakradhar Reddy">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Adityachakradhar Reddy | Senior Software Engineer @ Google">
+  <meta property="og:description" content="Systems. People. Impact. 14 years of building scalable systems, solving complex problems, and working with amazing teams.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><text x='16' y='22' font-family='sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'>AR</text></svg>">
+
+  <!-- Google Fonts: Cormorant Garamond & Playfair for headlines, Plus Jakarta Sans for UI, Caveat for hand-drawn annotation -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Twinkling Starfield & Shooting Stars Canvas (Fixed Background) -->
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+
+  <!-- Interactive Subtle Cursor Glow Spotlight -->
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Horizontal Scroll Progress Indicator (Fixed Top) -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- CONSTANT FIXED TOP NAVIGATION BAR (ALIGNED TO ALL 8 SLIDES) -->
+  <header class="top-nav" id="top-nav">
+    <a href="javascript:void(0)" class="nav-brand" data-slide="0">Adityachakradhar Reddy</a>
+    <nav class="nav-menu" id="nav-menu">
+      <a href="javascript:void(0)" class="menu-link active" data-slide="0">Home</a>
+      <a href="javascript:void(0)" class="menu-link" data-slide="1">About</a>
+      <a href="javascript:void(0)" class="menu-link" data-slide="2">Experience</a>
+      <a href="javascript:void(0)" class="menu-link" data-slide="3">Education</a>
+      <a href="javascript:void(0)" class="menu-link" data-slide="4">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HORIZONTAL VIEWPORT WRAPPER -->
+  <div class="viewport-wrapper" id="viewport">
+    <!-- GPU-Accelerated Transforming Horizontal Slider Track -->
+    <div class="slider-track" id="slider-track">
+
+      <!-- ====================================================================
+           SLIDE 0: HERO
+           ==================================================================== -->
+      <section class="slide slide-hero active-slide" id="slide-hero" data-index="0">
+        <div class="scenic-art-layer hero-scenic">
+          <div class="sunset-portal-glow">
+            <div class="portal-core"></div>
+            <div class="portal-ring"></div>
+          </div>
+          <div class="mountain-silhouette-hero"></div>
+          <div class="figure-silhouette-hero" title="Adityachakradhar Reddy"></div>
+        </div>
+
+        <div class="slide-content hero-content">
+          <h1 class="hero-headline anim-item">
+            Systems.<br>
+            People.<br>
+            <span class="gradient-text-impact">Impact.</span>
+          </h1>
+
+          <div class="hero-role-block anim-item">
+            <p class="role-badge-text">Senior Software Engineer @ Google</p>
+            <p class="role-subtext">
+              14 years of building scalable systems, solving complex problems, and working with amazing teams.
+            </p>
+          </div>
+
+          <button class="scroll-prompt-btn anim-item" id="hero-scroll-btn" title="Scroll through chapters">
+            <div class="mouse-scroll-icon" aria-hidden="true">
+              <div class="mouse-wheel"></div>
+            </div>
+            <span class="scroll-label">Scroll</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 1: 01 ABOUT
+           ==================================================================== -->
+      <section class="slide slide-about" id="slide-about" data-index="1">
+        <div class="scenic-art-layer about-scenic">
+          <div class="about-mist-glow"></div>
+          <div class="about-mountain-peaks"></div>
+          <div class="about-peak-climber"></div>
+        </div>
+
+        <div class="slide-content about-content">
+          <div class="slide-label anim-item">01 &nbsp; About</div>
+
+          <h2 class="slide-title anim-item">
+            14 years of building<br>
+            things, breaking things,<br>
+            and learning why they<br>
+            broke.
+          </h2>
+
+          <p class="slide-paragraph anim-item">
+            I'm a Senior Software Engineer at Google, passionate about building scalable systems, solving complex problems, and working with great teams. Over the years, I've had the privilege of working across hardware, embedded systems, and large-scale software &mdash; from FPGAs at Xilinx to cloud scale systems at Google.
+          </p>
+
+          <!-- 4 Stats Columns -->
+          <div class="stats-row anim-item">
+            <div class="stat-col">
+              <div class="stat-digit">14+</div>
+              <div class="stat-lbl">Years of<br>Experience</div>
+            </div>
+            <div class="stat-col">
+              <div class="stat-digit">7</div>
+              <div class="stat-lbl">Companies</div>
+            </div>
+            <div class="stat-col">
+              <div class="stat-digit">3</div>
+              <div class="stat-lbl">Engineering<br>Worlds</div>
+            </div>
+            <div class="stat-col">
+              <div class="stat-digit font-text">Hyderabad</div>
+              <div class="stat-lbl">Home</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2: 02 JOURNEY / EXPERIENCE (WITH IN-PLACE CARD SHOWN BY DEFAULT)
+           ==================================================================== -->
+      <section class="slide slide-journey" id="slide-journey" data-index="2">
+        <div class="scenic-art-layer journey-scenic">
+          <div class="river-sunset-ambient"></div>
+          <div class="journey-canyon-silhouette"></div>
+        </div>
+
+        <div class="slide-content journey-content">
+          <div class="slide-header anim-item">
+            <div class="slide-label anim-item">02 &nbsp; Experience</div>
+            <h2 class="slide-title anim-item">
+              A journey across interesting places,<br>
+              solving different problems.
+            </h2>
+            <p class="slide-subtitle anim-item">
+              From building hardware to large-scale software, each chapter taught me something new.
+            </p>
+          </div>
+
+          <!-- Horizontal Timeline Pathway -->
+          <div class="timeline-pathway anim-item">
+            <div class="timeline-track-line"></div>
+
+            <!-- 1. Aruba Networks -->
+            <div class="timeline-node" data-company="aruba">
+              <div class="node-logo-circle logo-aruba">
+                <span>aruba</span>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Aruba Networks</div>
+                <div class="node-period">2011 &ndash; 2012</div>
+                <div class="node-role">Intern</div>
+              </div>
+            </div>
+
+            <!-- 2. Samsung -->
+            <div class="timeline-node" data-company="samsung">
+              <div class="node-logo-circle logo-samsung">
+                <span>SAMSUNG</span>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Samsung</div>
+                <div class="node-period">2012 &ndash; 2013</div>
+                <div class="node-role">Software Engineer</div>
+              </div>
+            </div>
+
+            <!-- 3. Intel -->
+            <div class="timeline-node" data-company="intel">
+              <div class="node-logo-circle logo-intel">
+                <span>intel</span>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Intel</div>
+                <div class="node-period">2013 &ndash; 2015</div>
+                <div class="node-role">Graphics HW Eng</div>
+              </div>
+            </div>
+
+            <!-- 4. Xilinx -->
+            <div class="timeline-node" data-company="xilinx">
+              <div class="node-logo-circle logo-xilinx">
+                <span>X</span>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Xilinx</div>
+                <div class="node-period">2015 &ndash; 2021</div>
+                <div class="node-role">Senior SE II</div>
+              </div>
+            </div>
+
+            <!-- 5. Microsoft -->
+            <div class="timeline-node" data-company="microsoft">
+              <div class="node-logo-circle logo-microsoft">
+                <div class="ms-grid">
+                  <span class="ms-r"></span><span class="ms-g"></span>
+                  <span class="ms-b"></span><span class="ms-y"></span>
+                </div>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Microsoft</div>
+                <div class="node-period">2021 &ndash; 2024</div>
+                <div class="node-role">Senior SE</div>
+              </div>
+            </div>
+
+            <!-- 6. Salesforce -->
+            <div class="timeline-node" data-company="salesforce">
+              <div class="node-logo-circle logo-salesforce">
+                <span>salesforce</span>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Salesforce</div>
+                <div class="node-period">2024</div>
+                <div class="node-role">Lead MTS</div>
+              </div>
+            </div>
+
+            <!-- 7. Google (Selected by Default) -->
+            <div class="timeline-node current-node active-node" data-company="google">
+              <div class="node-logo-circle logo-google">
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+              </div>
+              <div class="node-details">
+                <div class="node-company">Google</div>
+                <div class="node-period">2024 &ndash; Present</div>
+                <div class="node-role">Senior SE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IN-PLACE COMPANY DETAIL CARD (SHOWN BY DEFAULT ON SCREEN, NO MODAL) -->
+          <div class="inline-experience-card" id="inline-experience-card">
+            <div class="card-aurora-glow" aria-hidden="true"></div>
+
+            <div class="card-meta-header">
+              <div class="card-company-tag" id="exp-card-tag">Current Role &middot; Tools, Software &amp; Big Data Pipelines</div>
+              <div class="card-timeline-dates" id="exp-card-period">2024 &ndash; Present &middot; Hyderabad, India</div>
+            </div>
+
+            <div class="card-role-title-row">
+              <div class="card-brand-wrap">
+                <div class="card-logo-container" id="exp-card-logo-container">
+                  <div class="card-logo-mini logo-google">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                      <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                      <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-company-name" id="exp-card-company">Google</h3>
+              </div>
+              <span class="card-role-name" id="exp-card-role">Senior Software Engineer</span>
+            </div>
+
+            <ul class="card-highlights-list" id="exp-card-highlights">
+              <li>Engineered high-impact internal tools and developer software that support Googlers worldwide, accelerating core engineering velocity and operational workflows.</li>
+              <li>Architected and scaled massive, mission-critical data-driven pipelines processing complex organizational datasets to power executive and strategic decisions.</li>
+              <li>Designed resilient, low-latency distributed systems with comprehensive telemetry, deterministic data consistency, and high-availability SLAs.</li>
+            </ul>
+
+            <div class="card-skills-cloud" id="exp-card-skills">
+              <span class="card-skill-pill">Internal Googler Tools</span>
+              <span class="card-skill-pill">Hyperscale Data Pipelines</span>
+              <span class="card-skill-pill">Critical Decision Intelligence</span>
+              <span class="card-skill-pill">Distributed Systems</span>
+              <span class="card-skill-pill">Enterprise Software</span>
+              <span class="card-skill-pill">High Availability</span>
+            </div>
+
+            <div class="card-quick-selector">
+              <span class="selector-hint">Select company:</span>
+              <button class="selector-chip" data-target="aruba">Aruba Networks</button>
+              <button class="selector-chip" data-target="samsung">Samsung</button>
+              <button class="selector-chip" data-target="intel">Intel</button>
+              <button class="selector-chip" data-target="xilinx">Xilinx</button>
+              <button class="selector-chip" data-target="microsoft">Microsoft</button>
+              <button class="selector-chip" data-target="salesforce">Salesforce</button>
+              <button class="selector-chip active" data-target="google">Google</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3: 03 EDUCATION (DEDICATED NEW SCREEN WITH RICH DESIGN ELEMENTS)
+           ==================================================================== -->
+      <section class="slide slide-education" id="slide-education" data-index="3">
+        <div class="scenic-art-layer education-scenic">
+          <div class="education-ambient-halo"></div>
+          <div class="education-geometric-constellation"></div>
+        </div>
+
+        <div class="slide-content education-content">
+          <div class="slide-label anim-item">03 &nbsp; Education</div>
+
+          <h2 class="slide-title anim-item">
+            Academic Foundations &amp;<br>
+            Specialization.
+          </h2>
+
+          <p class="slide-subtitle anim-item">
+            Dual engineering credentials bridging electronic hardware design, computer architecture, and modern data science.
+          </p>
+
+          <!-- 2 Distinctive Glassmorphic Academic Cards -->
+          <div class="education-cards-grid anim-item">
+            <!-- Card 1: IIT Hyderabad -->
+            <div class="edu-card card-iit">
+              <div class="edu-card-top">
+                <div class="edu-crest crest-iit">
+                  <span>IIT</span>
+                </div>
+                <div class="edu-badge-tag">Postgraduate &middot; Data Science</div>
+              </div>
+
+              <div class="edu-institution-info">
+                <h3 class="edu-degree-name">Executive M.Tech in Data Science</h3>
+                <h4 class="edu-college-name">Indian Institute of Technology (IIT), Hyderabad</h4>
+                <div class="edu-duration">2017 &ndash; 2019 &middot; Executive Degree</div>
+              </div>
+
+              <p class="edu-summary-text">
+                Specialized coursework and applied research in Machine Learning, Deep Neural Architectures, Big Data Analytics, Statistical Inference, and high-performance neural computing utilizing TensorFlow and PyTorch.
+              </p>
+
+              <div class="edu-tags-cloud">
+                <span class="edu-tag">Machine Learning</span>
+                <span class="edu-tag">Deep Learning</span>
+                <span class="edu-tag">TensorFlow</span>
+                <span class="edu-tag">PyTorch</span>
+                <span class="edu-tag">Statistical Inference</span>
+                <span class="edu-tag">Big Data Analytics</span>
+              </div>
+            </div>
+
+            <!-- Card 2: BITS Pilani -->
+            <div class="edu-card card-bits">
+              <div class="edu-card-top">
+                <div class="edu-crest crest-bits">
+                  <span>BITS</span>
+                </div>
+                <div class="edu-badge-tag">Undergraduate &middot; Honors</div>
+              </div>
+
+              <div class="edu-institution-info">
+                <h3 class="edu-degree-name">B.E. (Hons) in Electrical &amp; Electronics</h3>
+                <h4 class="edu-college-name">Birla Institute of Technology and Science (BITS), Pilani</h4>
+                <div class="edu-duration">2008 &ndash; 2012 &middot; Rajasthan Campus</div>
+              </div>
+
+              <p class="edu-summary-text">
+                Graduated with Honors. Rigorous curriculum in computer architecture, microprocessors, digital systems design, signals &amp; systems, and foundational low-level software engineering in C and C++.
+              </p>
+
+              <div class="edu-tags-cloud">
+                <span class="edu-tag">B.E. Honors</span>
+                <span class="edu-tag">Computer Architecture</span>
+                <span class="edu-tag">Digital Logic</span>
+                <span class="edu-tag">Microprocessors</span>
+                <span class="edu-tag">Data Structures &amp; OOP</span>
+                <span class="edu-tag">Low-Level Systems</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4: 04 CONTACT
+           ==================================================================== -->
+      <section class="slide slide-contact" id="slide-contact" data-index="4">
+        <div class="scenic-art-layer contact-scenic">
+          <div class="milky-way-galaxy"></div>
+          <div class="tent-camp-area">
+            <div class="glowing-tent-flame"></div>
+            <div class="tent-shape"></div>
+          </div>
+          <div class="contact-mountain-ridge"></div>
+        </div>
+
+        <div class="slide-content contact-content">
+          <div class="slide-label anim-item">04 &nbsp; Contact</div>
+
+          <h2 class="slide-title anim-item">
+            Let's build<br>
+            something<br>
+            <span class="gradient-text-impact">interesting.</span>
+          </h2>
+
+          <p class="slide-subtitle anim-item">
+            Always open to interesting conversations, new opportunities and good ideas.
+          </p>
+
+          <div class="contact-social-strip anim-item">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/adityachakradharreddy/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/adix149" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="GitHub: github.com/adix149">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:adix.149@gmail.com" class="social-circle-btn" title="Email: adix.149@gmail.com">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+
+            <!-- Phone / WhatsApp -->
+            <button onclick="copyText('+917411184610', 'Phone number copied!')" class="social-circle-btn" title="Phone: +91 7411184610">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.3-.6-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM5 5h1.5c.2.8.4 1.5.7 2.2l-1.1 1.1C5.5 7.1 5.2 6.1 5 5zm14 14c-1.1-.2-2.1-.5-3.1-.9l1.1-1.1c.7.3 1.4.5 2 .7V19z"/>
+              </svg>
+            </button>
+          </div>
+
+          <button class="pill-btn btn-say-hello anim-item" id="open-contact-dialog-btn" title="Open Contact Dialog" aria-label="Say Hello - Open contact details">
+            <span class="say-hello-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </span>
+            <span class="say-hello-text">Say Hello</span>
+            <span class="say-hello-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+
+          <div class="contact-footer-bar anim-item">
+            <p>&copy; <span id="copyright-year">2025</span> Adityachakradhar Reddy. All rights reserved.</p>
+            <p class="footer-sub-motto">Built with curiosity &middot; Designed for a better tomorrow</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /slider-track -->
+  </div><!-- /viewport-wrapper -->
+
+  <!-- Toast Box for Copy Notifications -->
+  <div id="toast-box" class="toast-box" aria-live="polite"></div>
+
+  <!-- Detail Modal for Articles & Contact -->
+  <div id="detail-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-content-area" id="modal-content-area"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
