@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorSpotlight();
   initGlitchFreeScrollEngine();
   initNavigation();
+  initMobileDrawer();
   initInlineExperienceCard();
   initContactModals();
   initDynamicCopyrightYear();
@@ -109,7 +110,7 @@ function initCosmicCanvas() {
 }
 
 /* --------------------------------------------------------------------------
-   2. CURSOR SPOTLIGHT AURA
+   2. SUBTLE AMBIENT MOUSE SPOTLIGHT
    -------------------------------------------------------------------------- */
 function initCursorSpotlight() {
   const glow = document.getElementById('cursor-glow');
@@ -117,22 +118,46 @@ function initCursorSpotlight() {
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let currentX = mouseX;
-  let currentY = mouseY;
+  let glowX = mouseX, glowY = mouseY;
+  let isVisible = false;
 
   window.addEventListener('pointermove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!isVisible) {
+      isVisible = true;
+      glow.classList.add('active');
+    }
   });
 
-  function animateGlow() {
-    currentX += (mouseX - currentX) * 0.12;
-    currentY += (mouseY - currentY) * 0.12;
-    glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateGlow);
+  document.addEventListener('mouseleave', () => {
+    isVisible = false;
+    glow.classList.remove('active');
+  });
+
+  // Interactive element hover bloom
+  const interactiveElements = 'a, button, input, textarea, select, .timeline-node, .selector-chip, .modal-channel-card, .edu-card, .cert-badge, [role="button"]';
+  
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest && e.target.closest(interactiveElements)) {
+      glow.classList.add('hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(interactiveElements)) {
+      glow.classList.remove('hovering');
+    }
+  });
+
+  function renderCursor() {
+    glowX += (mouseX - glowX) * 0.12;
+    glowY += (mouseY - glowY) * 0.12;
+    glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(renderCursor);
   }
 
-  animateGlow();
+  requestAnimationFrame(renderCursor);
 }
 
 /* --------------------------------------------------------------------------
@@ -165,54 +190,63 @@ function initGlitchFreeScrollEngine() {
     }
   });
 
-  // A. GUARANTEED VERTICAL WHEEL SCROLL LISTENER (NO JITTER, NO GLITCH)
+  // A. GUARANTEED VERTICAL & HORIZONTAL WHEEL SCROLL LISTENER (NO JITTER, NO GLITCH)
   window.addEventListener('wheel', (e) => {
-    // If modal is open, let user scroll inside modal, do NOT intercept
+    // If modal is open, let user scroll inside modal
     const modal = document.getElementById('detail-modal');
     if (modal && modal.classList.contains('open')) return;
 
-    if (window.innerWidth > 768) {
-      e.preventDefault();
+    // If mobile drawer is open, let user interact with drawer
+    const mobileDrawer = document.getElementById('mobile-nav-drawer');
+    if (mobileDrawer && mobileDrawer.classList.contains('open')) return;
 
-      // If already animating, ignore subsequent rapid wheel events to keep transition silky smooth
-      if (isScrollLocked) return;
-
-      // Dominant delta (vertical wheel or horizontal trackpad gesture)
-      const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-
-      // Filter out accidental tiny micro-twitches and inertia residue
-      if (Math.abs(delta) < 16) return;
-
-      // Engage scroll lock immediately
-      isScrollLocked = true;
-
-      if (delta > 0) {
-        // Scrolling Down / Right -> Advance to Next Slide
-        goToSlide(currentSlideIndex + 1);
-      } else {
-        // Scrolling Up / Left -> Go to Previous Slide
-        goToSlide(currentSlideIndex - 1);
-      }
-
-      clearTimeout(scrollLockTimer);
-      scrollLockTimer = setTimeout(() => {
-        isScrollLocked = false;
-      }, 780); // Synchronized to Gaussian transition
+    // Check if the current slide is scrolling internally
+    const activeSlide = document.querySelector('.slide.active-slide');
+    if (activeSlide && activeSlide.scrollHeight > activeSlide.clientHeight) {
+      const isAtBottom = activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 10;
+      const isAtTop = activeSlide.scrollTop <= 5;
+      if (e.deltaY > 0 && !isAtBottom) return;
+      if (e.deltaY < 0 && !isAtTop) return;
     }
+
+    e.preventDefault();
+
+    // If already animating, ignore subsequent rapid wheel events to keep transition silky smooth
+    if (isScrollLocked) return;
+
+    // Dominant delta (vertical wheel or horizontal trackpad gesture)
+    const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+
+    // Filter out accidental tiny micro-twitches and inertia residue
+    if (Math.abs(delta) < 16) return;
+
+    // Engage scroll lock immediately
+    isScrollLocked = true;
+
+    if (delta > 0) {
+      // Scrolling Down / Right -> Advance to Next Slide
+      goToSlide(currentSlideIndex + 1);
+    } else {
+      // Scrolling Up / Left -> Go to Previous Slide
+      goToSlide(currentSlideIndex - 1);
+    }
+
+    clearTimeout(scrollLockTimer);
+    scrollLockTimer = setTimeout(() => {
+      isScrollLocked = false;
+    }, 780); // Synchronized to Gaussian transition
   }, { passive: false });
 
-  // B. MOUSE DRAG / SWIPE TO SCROLL (DESKTOP)
+  // B. MOUSE DRAG / SWIPE TO SCROLL (DESKTOP & TABLET)
   let isMouseDown = false;
   let dragStartX = 0;
 
   window.addEventListener('mousedown', (e) => {
-    if (e.target.closest('button, a, input, textarea, .timeline-node, .article-row, .now-card, .modal-card')) {
+    if (e.target.closest('button, a, input, textarea, .timeline-node, .article-row, .now-card, .modal-card, .mobile-nav-panel')) {
       return;
     }
-    if (window.innerWidth > 768) {
-      isMouseDown = true;
-      dragStartX = e.clientX;
-    }
+    isMouseDown = true;
+    dragStartX = e.clientX;
   });
 
   window.addEventListener('mouseup', (e) => {
@@ -240,17 +274,26 @@ function initGlitchFreeScrollEngine() {
   }, { passive: true });
 
   window.addEventListener('touchend', (e) => {
-    if (window.innerWidth > 768 && e.changedTouches.length === 1) {
+    // If modal or mobile drawer is open, let user interact with modal/drawer
+    const modal = document.getElementById('detail-modal');
+    if (modal && modal.classList.contains('open')) return;
+    const mobileDrawer = document.getElementById('mobile-nav-drawer');
+    if (mobileDrawer && mobileDrawer.classList.contains('open')) return;
+
+    if (e.changedTouches.length === 1) {
       const diffX = touchStartX - e.changedTouches[0].clientX;
       const diffY = touchStartY - e.changedTouches[0].clientY;
-      const delta = Math.abs(diffY) > Math.abs(diffX) ? diffY : diffX;
 
-      if (Math.abs(delta) > 40) {
-        if (delta > 0) {
+      // Primary: Horizontal Swipe detection (Swipe Left = Next, Swipe Right = Prev)
+      if (Math.abs(diffX) > 36 && Math.abs(diffX) > Math.abs(diffY) * 1.15) {
+        if (diffX > 0) {
           goToSlide(currentSlideIndex + 1);
         } else {
           goToSlide(currentSlideIndex - 1);
         }
+      } else if (currentSlideIndex === 0 && diffY > 48 && Math.abs(diffY) > Math.abs(diffX) * 1.25) {
+        // On Hero slide, swiping upward advances to About slide
+        goToSlide(1);
       }
     }
   }, { passive: true });
@@ -322,21 +365,16 @@ function goToSlide(index, animate = true) {
     progressBar.style.width = `${pct}%`;
   }
 
-  // Synchronize Top Navbar & Active Slide State
+  // Synchronize Top Navbar, Mobile Drawer & Active Slide State
   updateNavStates(currentSlideIndex);
 
   // Update active slide class for cinematic backdrop breath
   document.querySelectorAll('.slide').forEach((slideEl, idx) => {
     slideEl.classList.toggle('active-slide', idx === currentSlideIndex);
-  });
-
-  // Mobile fallback
-  if (window.innerWidth <= 768) {
-    const slides = document.querySelectorAll('.slide');
-    if (slides[index]) {
-      slides[index].scrollIntoView({ behavior: 'smooth' });
+    if (idx !== currentSlideIndex) {
+      slideEl.scrollTop = 0;
     }
-  }
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -351,6 +389,18 @@ function initNavigation() {
       isScrollLocked = false;
       clearTimeout(scrollLockTimer);
       const targetIdx = parseInt(link.getAttribute('data-slide'), 10);
+      goToSlide(targetIdx);
+    });
+  });
+
+  // Mobile Bottom Slide Dots Click
+  document.querySelectorAll('.mobile-slide-dot[data-slide]').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      isScrollLocked = false;
+      clearTimeout(scrollLockTimer);
+      const targetIdx = parseInt(dot.getAttribute('data-slide'), 10);
       goToSlide(targetIdx);
     });
   });
@@ -380,18 +430,79 @@ function initNavigation() {
 }
 
 /**
- * Synchronizes the Top Navigation links to the active slide index (0 to 4):
- * - 0: Home (#slide-hero)
- * - 1: About (#slide-about)
- * - 2: Experience (#slide-journey)
- * - 3: Education (#slide-education)
- * - 4: Contact (#slide-contact)
+ * Mobile Navigation Drawer Controls
+ */
+function initMobileDrawer() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  if (!drawer || !toggleBtn) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
+
+  // Drawer menu items navigation
+  document.querySelectorAll('.mobile-menu-item[data-slide]').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetIdx = parseInt(item.getAttribute('data-slide'), 10);
+      goToSlide(targetIdx);
+      closeDrawer();
+    });
+  });
+
+}
+
+/**
+ * Synchronizes Top Navigation links, mobile drawer links, and bottom dots to active slide
  */
 function updateNavStates(index) {
-  const topLinks = document.querySelectorAll('.menu-link[data-slide]');
-  topLinks.forEach(link => {
+  // Desktop Top Nav links
+  document.querySelectorAll('.menu-link[data-slide]').forEach(link => {
     const targetIdx = parseInt(link.getAttribute('data-slide'), 10);
     link.classList.toggle('active', targetIdx === index);
+  });
+
+  // Mobile Drawer Links
+  document.querySelectorAll('.mobile-menu-item[data-slide]').forEach(link => {
+    const targetIdx = parseInt(link.getAttribute('data-slide'), 10);
+    link.classList.toggle('active', targetIdx === index);
+  });
+
+  // Mobile Floating Bottom Slide Dots
+  document.querySelectorAll('.mobile-slide-dot[data-slide]').forEach(dot => {
+    const targetIdx = parseInt(dot.getAttribute('data-slide'), 10);
+    dot.classList.toggle('active', targetIdx === index);
   });
 }
 
@@ -724,4 +835,3 @@ function initDynamicCopyrightYear() {
     yearElement.textContent = new Date().getFullYear();
   }
 }
-
