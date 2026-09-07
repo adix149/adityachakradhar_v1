@@ -714,7 +714,7 @@ function initContactModals() {
         
         <div class="modal-channels-list">
           <!-- Email -->
-          <a href="mailto:adix.149@gmail.com" class="modal-channel-card" title="Send Email">
+          <a href="mailto:" class="modal-channel-card" title="Send Email">
             <div class="channel-main">
               <div class="channel-icon-circle icon-email">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -724,7 +724,7 @@ function initContactModals() {
               </div>
               <div class="channel-info">
                 <span class="channel-name">Email</span>
-                <span class="channel-value">adix.149@gmail.com</span>
+                <span class="channel-value"></span>
               </div>
             </div>
             <span class="channel-action-badge">Email Me &rarr;</span>
@@ -747,7 +747,7 @@ function initContactModals() {
           </a>
 
           <!-- GitHub -->
-          <a href="https://github.com/adix149" target="_blank" rel="noopener noreferrer" class="modal-channel-card" title="GitHub Profile">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="modal-channel-card" title="GitHub Profile">
             <div class="channel-main">
               <div class="channel-icon-circle icon-github">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -756,14 +756,14 @@ function initContactModals() {
               </div>
               <div class="channel-info">
                 <span class="channel-name">GitHub</span>
-                <span class="channel-value">github.com/adix149</span>
+                <span class="channel-value">github.com/</span>
               </div>
             </div>
             <span class="channel-action-badge">Open GitHub &rarr;</span>
           </a>
 
           <!-- Phone -->
-          <div class="modal-channel-card" onclick="copyText('+917411184610', 'Phone number copied to clipboard!')" title="Click to copy phone number">
+          <div class="modal-channel-card" onclick="copyText('', 'Phone number copied to clipboard!')" title="Click to copy phone number">
             <div class="channel-main">
               <div class="channel-icon-circle icon-phone">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -772,7 +772,7 @@ function initContactModals() {
               </div>
               <div class="channel-info">
                 <span class="channel-name">Direct Line / WhatsApp</span>
-                <span class="channel-value">+91 7411184610</span>
+                <span class="channel-value"></span>
               </div>
             </div>
             <span class="channel-action-badge" style="color: var(--accent-purple); background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.3);">Copy Number 📋</span>
